@@ -44,16 +44,6 @@ const animalPost = async (
   res: Response<PostMessage>,
   next: NextFunction
 ) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    const messages: string = errors
-      .array()
-      .map((error) => `${error.msg}: ${error.param}`)
-      .join(', ');
-    next(new CustomError(messages, 400));
-    return;
-  }
-
   try {
     const animalID = await addAnimal(req.body);
 
