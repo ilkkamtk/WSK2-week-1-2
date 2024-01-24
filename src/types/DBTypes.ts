@@ -10,6 +10,10 @@ type Animal = {
   birthdate: Date;
 };
 
+type FullAnimal = Omit<Animal, 'species'> & {
+  species: FullSpecies;
+};
+
 type Species = {
   species_id: number;
   species_name: string;
@@ -17,4 +21,8 @@ type Species = {
   image: string;
 };
 
-export {Category, Animal, Species};
+type FullSpecies = Omit<Species, 'category'> & {
+  category: Category;
+};
+
+export {Category, Animal, Species, FullSpecies, FullAnimal};

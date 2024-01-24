@@ -41,10 +41,11 @@ const updateSpecies = async (
   id: number,
   species: Omit<Species, 'species_id'>
 ): Promise<boolean> => {
-  const [headers] = await promisePool.execute<ResultSetHeader>(
-    'UPDATE species SET species_name = ?, category = ?, image = ? WHERE species_id = ?;',
-    [species.species_name, species.category, species.image, id]
-  );
+  const sql = promisePool.format('UPDATE species SET ? WHERE species_id = ?;', [
+    species,
+    id,
+  ]);
+  const [headers] = await promisePool.execute<ResultSetHeader>(sql);
   if (headers.affectedRows === 0) {
     throw new CustomError('Species not updated', 304);
   }
@@ -57,7 +58,7 @@ const deleteSpecies = async (id: number): Promise<boolean> => {
     [id]
   );
   if (headers.affectedRows === 0) {
-    throw new CustomError('Species not updated', 304);
+    throw new CustomError('Species not deleted', 404);
   }
   return true;
 };
