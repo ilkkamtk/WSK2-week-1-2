@@ -8,6 +8,7 @@ import {
 import {Category} from '../../types/DBTypes';
 import {NextFunction, Request, Response} from 'express';
 import {MessageResponse, PostMessage} from '../../types/MessageTypes';
+import {errorMonitor} from 'events';
 
 const categoryListGet = async (
   _req: Request,
@@ -18,6 +19,7 @@ const categoryListGet = async (
     const categories = await getAllCategories();
     res.json(categories);
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };

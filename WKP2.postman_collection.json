@@ -1,0 +1,275 @@
+{
+	"info": {
+		"_postman_id": "7a1bfc33-eb09-4c08-be8d-137535063129",
+		"name": "WKP2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "1435435"
+	},
+	"item": [
+		{
+			"name": "post category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"category_name\": \"Mammal\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/v1/categories"
+			},
+			"response": []
+		},
+		{
+			"name": "post animal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"animal_name\": \"Seppo\",\n    \"species\": \"6501596837d168d826b8f18b\",\n    \"birthdate\": \"2009-11-29\",\n    \"gender\": \"Male\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/v1/animals"
+			},
+			"response": []
+		},
+		{
+			"name": "post species",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"species_name\": \"Wolf\",\n    \"category\": \"650158e037d168d826b8f189\",\n    \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": \n        [24.7865215, 60.2209545]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/v1/species"
+			},
+			"response": []
+		},
+		{
+			"name": "put category",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"category_name\": \"Insect\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/v1/categories/"
+			},
+			"response": []
+		},
+		{
+			"name": "put species",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"species_name\": \"Dog\",\n    \"category\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/v1/species/2"
+			},
+			"response": []
+		},
+		{
+			"name": "put animal",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"birthdate\": \"2019-05-06\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/v1/animals/64f82d31cb89f818b6d59433"
+			},
+			"response": []
+		},
+		{
+			"name": "delete category",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:3000/api/v1/categories/64fae22507293dfdbd3908a2"
+			},
+			"response": []
+		},
+		{
+			"name": "delete species",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:3000/api/v1/species/2"
+			},
+			"response": []
+		},
+		{
+			"name": "delete animal",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:3000/api/v1/animals/2"
+			},
+			"response": []
+		},
+		{
+			"name": "get all categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/v1/categories"
+			},
+			"response": []
+		},
+		{
+			"name": "get all species",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/v1/species"
+			},
+			"response": []
+		},
+		{
+			"name": "get all animals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/v1/animals"
+			},
+			"response": []
+		},
+		{
+			"name": "get category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/v1/categories/64f820a57f0efafcee1ed5b3"
+			},
+			"response": []
+		},
+		{
+			"name": "get species",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/v1/species/2"
+			},
+			"response": []
+		},
+		{
+			"name": "get animal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/v1/animals/3"
+			},
+			"response": []
+		},
+		{
+			"name": "POST user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"full_name\": \"sepi\",\n    \"email\": \"b@b.fi\",\n    \"password\": \"12345\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/api/v1/users"
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"ilkkamtk@metropolia.fi\",\n    \"password\": \"12345\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/api/v1/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "POST image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "animal",
+							"type": "file",
+							"src": "/Users/ilkkamtk/Documents/gitProjects/np2final/uploads/2020/06/kuvaJossaGPS.jpeg"
+						}
+					]
+				},
+				"url": "http://localhost:3002/api/v1/upload"
+			},
+			"response": []
+		},
+		{
+			"name": "GET all users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3001/api/v1/users"
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3001/api/v1/users/650d43bdb24d5ad42102df41"
+			},
+			"response": []
+		}
+	]
+}
