@@ -3,6 +3,8 @@ import {NextFunction, Request, Response} from 'express';
 import CustomError from './classes/CustomError';
 import {ErrorResponse} from './types/MessageTypes';
 import {validationResult} from 'express-validator';
+import fetchData from './lib/fetchData';
+import {ImageFromWikipedia} from './types/ImageFromWikipedia';
 
 const notFound = (req: Request, _res: Response, next: NextFunction) => {
   const error = new CustomError(`🔍 - Not Found - ${req.originalUrl}`, 404);
@@ -37,4 +39,22 @@ const validationErrors = (req: Request, _res: Response, next: NextFunction) => {
   next();
 };
 
-export {notFound, errorHandler, validationErrors};
+const imageFromWikipedia = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const url = `http://en.wikipedia.org/w/api.php?action=query&titles=${req.body.species_name}&prop=pageimages&format=json&pithumbsize=640`;
+    // console.log(url);
+    const imageData = await fetchData<ImageFromWikipedia>(url);
+    console.log(imageData);
+    const page = imageData.query.pages[Object.keys(imageData.query.pages)[0]];
+    req.body.image = page.thumbnail.source;
+    next();
+  } catch (error) {
+    next(new CustomError('wiki error', 400));
+  }
+};
+
+export {notFound, errorHandler, validationErrors, imageFromWikipedia};
