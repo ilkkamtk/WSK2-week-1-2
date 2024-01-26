@@ -45,12 +45,12 @@ const imageFromWikipedia = async (
   next: NextFunction
 ) => {
   try {
-    const url = `http://en.wikipedia.org/w/api.php?action=query&titles=${req.body.species_name}&prop=pageimages&format=json&pithumbsize=640`;
-    // console.log(url);
+    // new version: formatversion=2
+    const url = `http://en.wikipedia.org/w/api.php?action=query&titles=${req.body.species_name}&prop=pageimages&format=json&pithumbsize=640&formatversion=2`;
     const imageData = await fetchData<ImageFromWikipedia>(url);
-    console.log(imageData);
-    const page = imageData.query.pages[Object.keys(imageData.query.pages)[0]];
-    req.body.image = page.thumbnail.source;
+    console.log(imageData.query.pages);
+    const thumbnail = imageData.query.pages[0].thumbnail.source;
+    req.body.image = thumbnail;
     next();
   } catch (error) {
     next(new CustomError('wiki error', 400));
